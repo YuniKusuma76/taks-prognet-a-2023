@@ -47,115 +47,175 @@
   <section id="form" class="form-mf sect-pt4 route">
     <div class="container mt-4">
       <h1 class="text-center">Form Biodata</h1>
-        <form id="formbio" action="tampil.html" method="GET">
-          <div class="form-group mb-4">
-            <label for="fullname">Full Name :</label>
-            <input type="text" class="form-control" id="fullname" name="fullname" required>
+        <form name="formBiodata" action="tampil_hasil_form.php" method="post" onsubmit="return validateForm()">
+          <div class="form-group mb-3">
+            <label>Nama lengkap :</label>
+            <input type="text" name="fullname" placeholder="Nama Lengkap" class="form-control">
           </div>
-          <div class="form-group mb-4">
-            <label for="username">Username :</label>
-            <input type="text" class="form-control" id="username" name="username" required>
+          <div class="form-group mb-3">
+            <label>NIM :</label>
+            <input type="text" name="nim" placeholder="NIM" class="form-control">
           </div>
-          <div>
-            <label for="password" class="form-label">Password</label>
-            <input type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock" required>
-            <div id="passwordHelpBlock" class="form-text mb-4">
-              Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-            </div>
+          <div class="form-group mb-3">
+            <label>Email :</label>
+            <input type="email" name="email" placeholder="name@example.com" class="form-control">
           </div>
-          <div class="form-group mb-4">
-              <label for="nim">NIM :</label>
-              <input type="text" class="form-control" id="nim" name="nim" required>
+          <div class="form-group">
+            <label>Username :</label>
           </div>
-          <div class="form-group mb-4">
-            <label for="email">Email :</label>
-            <input type="text" class="form-control" id="email" name="email" required>
-        </div>
-          <div class="form-group mb-4">
-            <label for="agama" class="form-label">Agama :</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Select this option</option>
-              <option value="Hindu">Hindu</option>
-              <option value="Islam">Islam</option>
-              <option value="Budha">Budha</option>
-              <option value="Kristen Protestan">Kristen Protestan</option>
-              <option value="Kristen Katolik">Kristen Katolik</option>
-              <option value="Kong Hu Chu">Kong Hu Chu</option>
-              <option value="Other">Other</option>
+          <div class="input-group flex-nowrap mb-3">
+            <span class="input-group-text" id="addon-wrapping">@</span>
+            <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+          </div>
+          <div class="form-group mb-3">
+            <label>Password :</label>
+            <input type="password" name="password" class="form-control" placeholder="Password" aria-describedby="passwordHelpBlock">
+          </div>
+          <div class="form-group mb-3">
+            <label>Program Studi :</label>
+            <select name="prodi" class="form-control">
+              <option selected>Pilih Program Studi</option>
+              <option value="Arsitektur">S1 Arsitektur</option>
+              <option value="Teknik Sipil">S1 Teknik Sipil</option>
+              <option value="Teknik Mesin">S1 Teknik Mesin</option>
+              <option value="Teknik Elektro">S1 Teknik Elektro</option>
+              <option value="Teknologi Informasi">S1 Teknologi Informasi</option>
+              <option value="Teknik Industri">S1 Teknik Industri</option>
+              <option value="Teknil Lingkungan">S1 Teknik Lingkungan</option>
             </select>
           </div>
           <div>
-            <label for="jeniskelamin" class="form-label">Jenis Kelamin :</label>
+            <label">Jenis Kelamin :</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="jeniskelamin" id="jeniskelamin" required>
-            <label class="form-check-label" for="jeniskelamin" value="Laki - Laki">
+            <input class="form-check-input" type="radio" name="jeniskelamin">
+            <label class="form-check-label" value="Laki - Laki">
               Male
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="jeniskelamin" id="jeniskelamin" required>
+            <input class="form-check-input" type="radio" name="jeniskelamin">
             <label class="form-check-label" for="jeniskelamin" value="Perempuan">
               Famale
             </label>
           </div>
-          <div class="form-check mb-4">
-            <input class="form-check-input" type="radio" name="jeniskelamin" id="jeniskelamin" required>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="jeniskelamin">
             <label class="form-check-label" for="jeniskelamin" value="Tidak inggin memberitahu">
               Other
             </label>
           </div>
           <div>
-            <label for="hobi" class="form-label">Choose what you like the most below :</label>
+            <label>Pilih Mata Kuliah yang Anda Dapat Hari ini :</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option1">
-            <label class="form-check-label" for="hobi">Dancer</label>
+            <input class="form-check-input" type="checkbox" name="matakuliah" value="ILS">
+            <label class="form-check-label" for="matakuliah">Interpersonal Life Skill</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option2">
-            <label class="form-check-label" for="hobi">Singing</label>
+            <input class="form-check-input" type="checkbox" name="matakuliah" value="PD">
+            <label class="form-check-label" for="matakuliah">Pangkalan Data</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option3">
-            <label class="form-check-label" for="hobi">Drawing</label>
+            <input class="form-check-input" type="checkbox" name="matakuliah" value="MJS">
+            <label class="form-check-label" for="matakuliah">Manajemen Jaringan dan Server</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option1">
-            <label class="form-check-label" for="hobi">Write</label>
+            <input class="form-check-input" type="checkbox" name="matakuliah" value="PCD">
+            <label class="form-check-label" for="matakuliah">Pengolahan Citra Digital</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option2">
-            <label class="form-check-label" for="hobi">Gamers</label>
+            <input class="form-check-input" type="checkbox" name="matakuliah" value="ITI">
+            <label class="form-check-label" for="matakuliah">Inovasi TI</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option1">
-            <label class="form-check-label" for="hobi">Traveling</label>
+            <input class="form-check-input" type="checkbox" name="matakuliah" value="Prognet">
+            <label class="form-check-label" for="matakuliah">Pemrograman Internet</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option2">
-            <label class="form-check-label" for="hobi">Sleping</label>
+            <input class="form-check-input" type="checkbox" name="matakuliah" value="RPL">
+            <label class="form-check-label" for="matakuliah">Rekayasa Perangkat Lunak</label>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option3">
-            <label class="form-check-label" for="hobi">Swiming</label>
-          </div>
-          <div class="form-check form-check-inline mb-4">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option3">
-            <label class="form-check-label" for="hobi">Reading</label>
+          <div class="form-check form-check-inline mb-3">
+            <input class="form-check-input" type="checkbox" name="matakuliah" value="YLS">
+            <label class="form-check-label" for="matakuliah">Other</label>
           </div>
           <div>
             <button type="submit" class="btn btn-primary mb-4">Submit</button>
           </div>
-      </form>
-  </div>
-</section>
-<!-- ======= End Form ======= -->
+        </form>
+      </div>
+    <script>
+      function validateForm() {
+        // Validasi Nama Lengkap
+        if (document.forms["formBiodata"]["fullname"].value == "") {
+            alert("Masukkan Nama Lengkap Anda");
+            document.forms["formBiodata"]["fullname"].focus();
+            return false;
+        }
+        // Validasi NIM
+        if (document.forms["formBiodata"]["nim"].value == "") {
+            alert("Masukkan NIM Anda");
+            document.forms["formBiodata"]["nim"].focus();
+            return false;
+        }
+        // Validasi E-mail
+        if (document.forms["formBiodata"]["email"].value == "") {
+            alert("Masukkan E-mail Aktif Anda");
+            document.forms["formBiodata"]["email"].focus();
+            return false;
+        }
+        // Validasi Username
+        if (document.forms["formBiodata"]["username"].value == "") {
+            alert("Masukkan Username Anda");
+            document.forms["formBiodata"]["username"].focus();
+            return false;
+        }
+        // Validasi Password
+        if (document.forms["formBiodata"]["password"].value == "") {
+            alert("Masukkan Password Anda");
+            document.forms["formBiodata"]["password"].focus();
+            return false;
+        }
+        // Validasi Program Studi
+        if (document.forms["formBiodata"]["prodi"].selectedIndex < 1) {
+            alert("Pilih Jurusan Anda");
+            document.forms["formBiodata"]["prodi"].focus();
+            return false;
+        }
+        // Validasi Jenis Kelamin
+        var jeniskelamin = document.getElementsByName('jeniskelamin');
+        var genValue = false;
+          for(var i=0; i<jeniskelamin.length;i++){
+            if(jeniskelamin[i].checked == true){
+                genValue = true;    
+            }
+          }
+          if(!genValue){
+            alert("Pilih Jenis Kelamin Anda");
+            return false;
+          }
+        // Validasi Mata Kuliah
+        var matakuliah = document.getElementsByName('matakuliah');
+        var genValue = false;
+          for(var i=0; i<matakuliah.length;i++){
+            if(matakuliah[i].checked == true){
+                genValue = true;    
+            }
+          }
+          if(!genValue){
+            alert("Anda Belum Memilih Mata Kuliah Hari Ini");
+            return false;
+          }
+      }
+    </script>
+  </section>
+  <!-- ======= End Form ======= -->
 
 </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer>
+  <footer class="bg-dark">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -166,7 +226,8 @@
         </div>
       </div>
     </div>
-  </footer><!-- End  Footer -->
+  </footer>
+  <!-- ======= End  Footer ======= -->
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
