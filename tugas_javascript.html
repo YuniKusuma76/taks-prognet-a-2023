@@ -49,99 +49,63 @@
       <h1 class="text-center">Form Biodata</h1>
         <form name="formBiodata" action="tampil_hasil_form.php" method="post" onsubmit="return validateForm()">
           <div class="form-group mb-3">
-            <label>Nama lengkap :</label>
+            <label><strong>Nama lengkap :</strong></label>
             <input type="text" name="fullname" placeholder="Nama Lengkap" class="form-control">
           </div>
           <div class="form-group mb-3">
-            <label>NIM :</label>
+            <label><strong>NIM :</strong></label>
             <input type="text" name="nim" placeholder="NIM" class="form-control">
           </div>
           <div class="form-group mb-3">
-            <label>Email :</label>
+            <label><strong>Email :</strong></label>
             <input type="email" name="email" placeholder="name@example.com" class="form-control">
           </div>
           <div class="form-group">
-            <label>Username :</label>
+            <label><strong>Username :</strong></label>
           </div>
           <div class="input-group flex-nowrap mb-3">
             <span class="input-group-text" id="addon-wrapping">@</span>
             <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
           </div>
           <div class="form-group mb-3">
-            <label>Password :</label>
+            <label><strong>Password :</strong></label>
             <input type="password" name="password" class="form-control" placeholder="Password" aria-describedby="passwordHelpBlock">
           </div>
           <div class="form-group mb-3">
-            <label>Program Studi :</label>
+            <label><strong>Studi :</strong></label>
             <select name="prodi" class="form-control">
               <option selected>Pilih Program Studi</option>
-              <option value="Arsitektur">S1 Arsitektur</option>
-              <option value="Teknik Sipil">S1 Teknik Sipil</option>
-              <option value="Teknik Mesin">S1 Teknik Mesin</option>
-              <option value="Teknik Elektro">S1 Teknik Elektro</option>
-              <option value="Teknologi Informasi">S1 Teknologi Informasi</option>
-              <option value="Teknik Industri">S1 Teknik Industri</option>
-              <option value="Teknil Lingkungan">S1 Teknik Lingkungan</option>
+              <option value="S1 Arsitektur">S1 Arsitektur</option>
+              <option value="S1 Teknik Sipil">S1 Teknik Sipil</option>
+              <option value="S1 Teknik Mesin">S1 Teknik Mesin</option>
+              <option value="S1 Teknik Elektro">S1 Teknik Elektro</option>
+              <option value="S1 Teknologi Informasi">S1 Teknologi Informasi</option>
+              <option value="S1 Teknik Industri">S1 Teknik Industri</option>
+              <option value="S1 Teknik Lingkungan">S1 Teknik Lingkungan</option>
             </select>
           </div>
           <div>
-            <label">Jenis Kelamin :</label>
+            <label"><strong>Kelamin :</strong></label>
+            <p><input class="me-1" type='radio' name='jeniskelamin' value='Laki - Laki'>Male</p>
+            <p><input class="me-1" type='radio' name='jeniskelamin' value='Perempuan'>Female</p>
+            <p><input class="me-1" type='radio' name='jeniskelamin' value='Tidak ingin Memberi Tahu'>Other</p>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="jeniskelamin">
-            <label class="form-check-label" value="Laki - Laki">
-              Male
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="jeniskelamin">
-            <label class="form-check-label" for="jeniskelamin" value="Perempuan">
-              Famale
-            </label>
-          </div>
-          <div class="form-check mb-3">
-            <input class="form-check-input" type="radio" name="jeniskelamin">
-            <label class="form-check-label" for="jeniskelamin" value="Tidak inggin memberitahu">
-              Other
-            </label>
-          </div>
-          <div>
-            <label>Pilih Mata Kuliah yang Anda Dapat Hari ini :</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="matakuliah" value="ILS">
-            <label class="form-check-label" for="matakuliah">Interpersonal Life Skill</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="matakuliah" value="PD">
-            <label class="form-check-label" for="matakuliah">Pangkalan Data</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="matakuliah" value="MJS">
-            <label class="form-check-label" for="matakuliah">Manajemen Jaringan dan Server</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="matakuliah" value="PCD">
-            <label class="form-check-label" for="matakuliah">Pengolahan Citra Digital</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="matakuliah" value="ITI">
-            <label class="form-check-label" for="matakuliah">Inovasi TI</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="matakuliah" value="Prognet">
-            <label class="form-check-label" for="matakuliah">Pemrograman Internet</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="matakuliah" value="RPL">
-            <label class="form-check-label" for="matakuliah">Rekayasa Perangkat Lunak</label>
-          </div>
-          <div class="form-check form-check-inline mb-3">
-            <input class="form-check-input" type="checkbox" name="matakuliah" value="YLS">
-            <label class="form-check-label" for="matakuliah">Other</label>
+          <div class="mb-3">
+            <label><strong>Mata Kuliah yang Anda Dapat Hari ini :</strong></label>
+            <p>
+              <input class="me-1" type='checkbox' name='matakuliah[]' value='Interpersonal Life Skill'>Interpersonal Life Skill
+              <input class="ms-4 me-1" type='checkbox' name='matakuliah[]' value='Pangkalan Data'>Pangkalan Data
+              <input class="ms-4 me-1" type='checkbox' name='matakuliah[]' value='Manajemen Jaringan dan Server'>Manajemen Jaringan dan Server
+              <input class="ms-4 me-1" type='checkbox' name='matakuliah[]' value='Pengolahan Citra Digital'>Pengolahan Citra Digital
+              <input class="ms-4 me-1" type='checkbox' name='matakuliah[]' value='Inovasi TI'>Inovasi TI
+            <p></p>
+              <input class="me-1" type='checkbox' name='matakuliah[]' value='Pemrograman Internet'>Pemrograman Internet           
+              <input class="ms-4 me-1" type='checkbox' name='matakuliah[]' value='Rekayasa Perangkat Lunak'>Rekayasa Perangkat Lunak
+              <input class="ms-3 me-1" type='checkbox' name='matakuliah[]' value='Mata Kuliah Lainnya'>Other
+            </p>
           </div>
           <div>
-            <button type="submit" class="btn btn-primary mb-4">Submit</button>
+            <button type="submit" name="submit" class="btn btn-primary mb-4">Submit</button>
           </div>
         </form>
       </div>
@@ -196,7 +160,7 @@
             return false;
           }
         // Validasi Mata Kuliah
-        var matakuliah = document.getElementsByName('matakuliah');
+        var matakuliah = document.getElementsByName('matakuliah[]');
         var genValue = false;
           for(var i=0; i<matakuliah.length;i++){
             if(matakuliah[i].checked == true){
