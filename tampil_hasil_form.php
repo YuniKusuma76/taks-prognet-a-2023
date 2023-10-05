@@ -91,7 +91,7 @@
                 if (isset($_POST['matakuliah'])) {
                     $matakuliah = $_POST['matakuliah'];
                     echo "<tr>";
-                    echo "<td>"."Jenis Kelamin"."</td>";
+                    echo "<td>"."Mata Kuliah"."</td>";
                     echo "<td>".":"."</td>";
                     echo "<td>"."List Mata Kuliah Hari Ini :"."</td>";
                     echo "</tr>";
