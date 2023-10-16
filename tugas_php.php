@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Tugas JavaScript - Form Biodata Diri</title>
+  <title>Tugas PHP - Tampil Inputan Form</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -46,8 +46,8 @@
   <!-- ======= Start Form ======= -->
   <section id="form" class="form-mf sect-pt4 route">
     <div class="container mt-4">
-      <h1 class="text-center">Form Biodata</h1>
-        <form name="formBiodata" action="" method="get" onsubmit="return validateForm()">
+      <h1 class="text-center">Form Biodata Diri</h1>
+        <form name="formBiodata" action="tampil_hasil_form.php" method="post" onsubmit="return validateForm()">
           <div class="form-group mb-3">
             <label><strong>Nama lengkap :</strong></label>
             <input type="text" name="fullname" id="fullname" placeholder="Nama Lengkap" class="form-control">
@@ -72,7 +72,7 @@
             <input type="password" name="password" id="password" class="form-control" placeholder="Password" aria-describedby="passwordHelpBlock">
           </div>
           <div class="form-group mb-3">
-            <label><strong>Program Studi :</strong></label>
+            <label><strong> Program Studi :</strong></label>
             <select name="prodi" id="prodi" class="form-control">
               <option selected>Pilih Program Studi</option>
               <option value="S1 Arsitektur">S1 Arsitektur</option>
@@ -85,7 +85,7 @@
             </select>
           </div>
           <div>
-            <label"><strong>Jenis Kelamin :</strong></label>
+            <label"><strong> Jenis Kelamin :</strong></label>
             <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Laki - Laki'>Male</p>
             <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Perempuan'>Female</p>
             <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Tidak ingin Memberi Tahu'>Other</p>

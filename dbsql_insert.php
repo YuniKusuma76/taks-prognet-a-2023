@@ -1,3 +1,19 @@
+<?php
+    $servername = "prognet.localnet";
+    $username = "2205551033";
+    $password = "2205551033";
+    $dbname = "db_2205551033";
+
+    // membentuk koneksi ke database mysql
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    $sql = "INSERT INTO tb_bio_mhs (nim,nama_lengkap,jenis_kelamin, fakultas, prodi, tgl_lahir, email, hobi) VALUES
+            ('$_POST[nim]','$_POST[fullname]','$_POST[jeniskelamin]','$_POST[fakultas]','$_POST[prodi]','$_POST[tgllahir]','$_POST[email]','$_POST[hobi]')";
+    if ($conn->query($sql) === TRUE){
+        echo "data behasil";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +21,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Tugas PHP - Tampil Inputan Form</title>
+  <title>Tugas Database MYSQL - CRUD Form Biodata</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -33,6 +49,7 @@
     <ul>
       <li><a class="nav-link scrollto" href="index.html">Home</a></li>
       <li><a class="nav-link scrollto active" href="index.html#taks">Taks</a></li>
+      <li><a class="nav-link scrollto" href="dbsql_select.php">List Biodata</a></li>
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
   </nav>
@@ -46,40 +63,22 @@
   <!-- ======= Start Hasil Form ======= -->
   <section id="form" class="form-mf sect-pt4 route">
     <div class="container mt-5">
-      <h1 class="text-center">Hasil Form Biodata</h1>
+      <h1 class="text-center mb-5">Hasil Form Biodata</h1>
         <table class="table" border="2">
           <thead>
             <?php
               if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                // kolom nama lengkap
-                echo "<tr>";
-                echo "<td>"."Nama Lengkap"."</td>";
-                echo "<td>".":"."</td>";
-                echo "<td>".$fullname = $_POST['fullname']."</td>";
-                echo "</tr>";
                 // kolom nim
                 echo "<tr>";
                 echo "<td>"."NIM"."</td>";
                 echo "<td>".":"."</td>";
                 echo "<td>".$nim = $_POST['nim']."</td>";
                 echo "</tr>";
-                // kolom e-mail
+                // kolom nama lengkap
                 echo "<tr>";
-                echo "<td>"."E-mail"."</td>";
+                echo "<td>"."Nama Lengkap"."</td>";
                 echo "<td>".":"."</td>";
-                echo "<td>".$email = $_POST['email']."</td>";
-                echo "</tr>";
-                // kolom username
-                echo "<tr>";
-                echo "<td>"."Username"."</td>";
-                echo "<td>".":"."</td>";
-                echo "<td>".$username = $_POST['username']."</td>";
-                echo "</tr>";
-                // kolom program studi
-                echo "<tr>";
-                echo "<td>"."Program Studi"."</td>";
-                echo "<td>".":"."</td>";
-                echo "<td>".$prodi = $_POST['prodi']."</td>";
+                echo "<td>".$fullname = $_POST['fullname']."</td>";
                 echo "</tr>";
                 // kolom jenis kelamin
                 echo "<tr>";
@@ -87,27 +86,41 @@
                 echo "<td>".":"."</td>";
                 echo "<td>".$jeniskelamin = $_POST['jeniskelamin']."</td>";
                 echo "</tr>";
-                // kolom mata kuliah
-                if (isset($_POST['matakuliah'])) {
-                    $matakuliah = $_POST['matakuliah'];
-                    echo "<tr>";
-                    echo "<td>"."Mata Kuliah"."</td>";
-                    echo "<td>".":"."</td>";
-                    echo "<td>"."List Mata Kuliah Hari Ini :"."</td>";
-                    echo "</tr>";
-                    for ($i=0; $i < count($matakuliah) ; $i++){
-                        echo "<tr>";
-                        echo "<td>".""."</td>";
-                        echo "<td>".""."</td>";
-                        echo "<td>"."- ".$matakuliah[$i]."</td>";
-                        echo "</tr>";
-                    }
-                }
+                // kolom fakultas
+                echo "<tr>";
+                echo "<td>"."Fakultas"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$fakultas = $_POST['fakultas']."</td>";
+                echo "</tr>";
+                // kolom program studi
+                echo "<tr>";
+                echo "<td>"."Program Studi"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$prodi = $_POST['prodi']."</td>";
+                echo "</tr>";
+                // kolom tanggal lahir
+                echo "<tr>";
+                echo "<td>"."Tanggal Lahir"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$tgllahir = $_POST['tgllahir']."</td>";
+                echo "</tr>";
+                // kolom e-mail
+                echo "<tr>";
+                echo "<td>"."E-mail"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$email = $_POST['email']."</td>";
+                echo "</tr>";
+                // kolom hobi
+                echo "<tr>";
+                echo "<td>"."Hobi"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$hobi = $_POST['hobi']."</td>";
+                echo "</tr>";
               }
             ?>
           </thead>
         </table>
-      <a href="tugas_php.php" class="previous">&laquo; Previous</a>
+      <a href="tugas_dbsql.php" class="previous">&laquo; Previous</a>
     </div>
   </section>
   <!-- ======= End Hasil Form ======= -->

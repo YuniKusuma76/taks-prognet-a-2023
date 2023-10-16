@@ -1,3 +1,13 @@
+<?php
+    $servername = "prognet.localnet";
+    $username = "2205551033";
+    $password = "2205551033";
+    $dbname = "db_2205551033";
+
+    // membentuk koneksi ke database mysql
+    $conn = new mysqli($servername, $username, $password, $dbname);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +15,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Tugas JavaScript - Form Biodata Diri</title>
+  <title>Tugas Database MYSQL - CRUD Form Biodata</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -33,6 +43,7 @@
     <ul>
       <li><a class="nav-link scrollto" href="index.html">Home</a></li>
       <li><a class="nav-link scrollto active" href="index.html#taks">Taks</a></li>
+      <li><a class="nav-link scrollto" href="dbsql_select.php">List Biodata</a></li>
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
   </nav>
@@ -46,30 +57,25 @@
   <!-- ======= Start Form ======= -->
   <section id="form" class="form-mf sect-pt4 route">
     <div class="container mt-4">
-      <h1 class="text-center">Form Biodata</h1>
-        <form name="formBiodata" action="" method="get" onsubmit="return validateForm()">
-          <div class="form-group mb-3">
-            <label><strong>Nama lengkap :</strong></label>
-            <input type="text" name="fullname" id="fullname" placeholder="Nama Lengkap" class="form-control">
-          </div>
-          <div class="form-group mb-3">
+      <h1 class="text-center mb-2">Form Biodata Mahasiswa</h1>
+        <form name="formBiodata" action="dbsql_insert.php" method="post" onsubmit="return validateForm()">
+        <div class="form-group mb-3">
             <label><strong>NIM :</strong></label>
             <input type="text" name="nim" id="nim" placeholder="NIM" class="form-control">
           </div>
           <div class="form-group mb-3">
-            <label><strong>Email :</strong></label>
-            <input type="email" name="email" id="email" placeholder="name@example.com" class="form-control">
+            <label><strong>Nama lengkap :</strong></label>
+            <input type="text" name="fullname" id="fullname" placeholder="Nama Lengkap" class="form-control">
           </div>
-          <div class="form-group">
-            <label><strong>Username :</strong></label>
-          </div>
-          <div class="input-group flex-nowrap mb-3">
-            <span class="input-group-text" id="addon-wrapping">@</span>
-            <input type="text" name="username" id="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+          <div>
+            <label"><strong>Jenis Kelamin :</strong></label>
+            <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Laki - Laki'>Male</p>
+            <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Perempuan'>Female</p>
+            <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Tidak ingin Memberi Tahu'>Other</p>
           </div>
           <div class="form-group mb-3">
-            <label><strong>Password :</strong></label>
-            <input type="password" name="password" id="password" class="form-control" placeholder="Password" aria-describedby="passwordHelpBlock">
+            <label><strong>Fakultas :</strong></label>
+            <input type="text" name="fakultas" id="fakultas" placeholder="Fakultas" class="form-control">
           </div>
           <div class="form-group mb-3">
             <label><strong>Program Studi :</strong></label>
@@ -84,25 +90,17 @@
               <option value="S1 Teknik Lingkungan">S1 Teknik Lingkungan</option>
             </select>
           </div>
-          <div>
-            <label"><strong>Jenis Kelamin :</strong></label>
-            <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Laki - Laki'>Male</p>
-            <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Perempuan'>Female</p>
-            <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Tidak ingin Memberi Tahu'>Other</p>
+          <div class="form-group mb-3">
+            <label><strong>Tanggal Lahir :</strong></label>
+            <input type="date" name="tgllahir" id="tgllahir" class="form-control" placeholder="Tanggal Lahir">
           </div>
-          <div class="mb-3">
-            <label><strong>Mata Kuliah yang Anda Dapat Hari ini :</strong></label>
-            <p>
-              <input class="me-1" type='checkbox' name='matakuliah[]' id="matakuliah[]" value='Interpersonal Life Skill'>Interpersonal Life Skill
-              <input class="ms-4 me-1" type='checkbox' name='matakuliah[]' id="matakuliah[]" value='Pangkalan Data'>Pangkalan Data
-              <input class="ms-4 me-1" type='checkbox' name='matakuliah[]' id="matakuliah[]" value='Manajemen Jaringan dan Server'>Manajemen Jaringan dan Server
-              <input class="ms-4 me-1" type='checkbox' name='matakuliah[]' id="matakuliah[]" value='Pengolahan Citra Digital'>Pengolahan Citra Digital
-              <input class="ms-4 me-1" type='checkbox' name='matakuliah[]' id="matakuliah[]" value='Inovasi TI'>Inovasi TI
-            <p></p>
-              <input class="me-1" type='checkbox' name='matakuliah[]' id="matakuliah[]" value='Pemrograman Internet'>Pemrograman Internet           
-              <input class="ms-4 me-1" type='checkbox' name='matakuliah[]' id="matakuliah[]" value='Rekayasa Perangkat Lunak'>Rekayasa Perangkat Lunak
-              <input class="ms-3 me-1" type='checkbox' name='matakuliah[]' id="matakuliah[]" value='Mata Kuliah Lainnya'>Other
-            </p>
+          <div class="form-group mb-3">
+            <label><strong>Email :</strong></label>
+            <input type="email" name="email" id="email" placeholder="name@example.com" class="form-control">
+          </div>
+          <div class="form-group mb-3">
+            <label><strong>Hobi :</strong></label>
+            <input type="text" name="hobi" id="hobi" class="form-control" placeholder="Hobi">
           </div>
           <div>
             <button type="submit" name="submit" class="btn btn-primary mb-4">Submit</button>
@@ -111,40 +109,16 @@
       </div>
     <script>
       function validateForm() {
-        // Validasi Nama Lengkap
-        if (document.forms["formBiodata"]["fullname"].value == "") {
-            alert("Masukkan Nama Lengkap Anda");
-            document.forms["formBiodata"]["fullname"].focus();
-            return false;
-        }
         // Validasi NIM
         if (document.forms["formBiodata"]["nim"].value == "") {
             alert("Masukkan NIM Anda");
             document.forms["formBiodata"]["nim"].focus();
             return false;
         }
-        // Validasi E-mail
-        if (document.forms["formBiodata"]["email"].value == "") {
-            alert("Masukkan E-mail Aktif Anda");
-            document.forms["formBiodata"]["email"].focus();
-            return false;
-        }
-        // Validasi Username
-        if (document.forms["formBiodata"]["username"].value == "") {
-            alert("Masukkan Username Anda");
-            document.forms["formBiodata"]["username"].focus();
-            return false;
-        }
-        // Validasi Password
-        if (document.forms["formBiodata"]["password"].value == "") {
-            alert("Masukkan Password Anda");
-            document.forms["formBiodata"]["password"].focus();
-            return false;
-        }
-        // Validasi Program Studi
-        if (document.forms["formBiodata"]["prodi"].selectedIndex < 1) {
-            alert("Pilih Program Studi Anda");
-            document.forms["formBiodata"]["prodi"].focus();
+        // Validasi Nama Lengkap
+        if (document.forms["formBiodata"]["fullname"].value == "") {
+            alert("Masukkan Nama Lengkap Anda");
+            document.forms["formBiodata"]["fullname"].focus();
             return false;
         }
         // Validasi Jenis Kelamin
@@ -159,18 +133,36 @@
             alert("Pilih Jenis Kelamin Anda");
             return false;
           }
-        // Validasi Mata Kuliah
-        var matakuliah = document.getElementsByName('matakuliah[]');
-        var genValue = false;
-          for(var i=0; i<matakuliah.length;i++){
-            if(matakuliah[i].checked == true){
-                genValue = true;    
-            }
-          }
-          if(!genValue){
-            alert("Anda Belum Memilih Mata Kuliah Hari Ini");
+        // Validasi Fakultas
+        if (document.forms["formBiodata"]["fakultas"].value == "") {
+            alert("Masukkan Fakultas Anda");
+            document.forms["formBiodata"]["fakultas"].focus();
             return false;
-          }
+        }
+        // Validasi Program Studi
+        if (document.forms["formBiodata"]["prodi"].selectedIndex < 1) {
+            alert("Pilih Jurusan Anda");
+            document.forms["formBiodata"]["prodi"].focus();
+            return false;
+        }
+        // Validasi Tanggal Lahir
+        if (document.forms["formBiodata"]["tgllahir"].value == "") {
+            alert("Masukkan Tanggal Lahir Anda");
+            document.forms["formBiodata"]["tgllahir"].focus();
+            return false;
+        }
+        // Validasi E-mail
+        if (document.forms["formBiodata"]["email"].value == "") {
+            alert("Masukkan E-mail Aktif Anda");
+            document.forms["formBiodata"]["email"].focus();
+            return false;
+        }
+        // Validasi Hobi
+        if (document.forms["formBiodata"]["hobi"].value == "") {
+            alert("Masukkan Hobi Anda");
+            document.forms["formBiodata"]["hobi"].focus();
+            return false;
+        }
       }
     </script>
   </section>
