@@ -95,9 +95,9 @@
           </div>
           <div>
             <label"><strong>Jenis Kelamin :</strong></label>
-            <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Laki - Laki'>Male</p>
-            <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Perempuan'>Female</p>
-            <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Tidak ingin Memberi Tahu'>Other</p>
+            <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Laki - Laki' <?php if($row['jenis_kelamin']=='Laki - Laki') echo 'checked'?>>Male</p>
+            <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Perempuan' <?php if($row['jenis_kelamin']=='Perempuan') echo 'checked'?>>Female</p>
+            <p><input class="me-1" type='radio' name='jeniskelamin' id="jeniskelamin" value='Tidak Ingin Memberi Tahu' <?php if($row['jenis_kelamin']=='Tidak Ingin Memberi Tahu') echo 'checked'?>>Other</p>
           </div>
           <div class="form-group mb-3">
             <label><strong>Fakultas :</strong></label>
@@ -107,13 +107,13 @@
             <label><strong>Program Studi :</strong></label>
             <select name="prodi" id="prodi" class="form-control">
               <option selected>Pilih Program Studi</option>
-              <option value="S1 Arsitektur">S1 Arsitektur</option>
-              <option value="S1 Teknik Sipil">S1 Teknik Sipil</option>
-              <option value="S1 Teknik Mesin">S1 Teknik Mesin</option>
-              <option value="S1 Teknik Elektro">S1 Teknik Elektro</option>
-              <option value="S1 Teknologi Informasi">S1 Teknologi Informasi</option>
-              <option value="S1 Teknik Industri">S1 Teknik Industri</option>
-              <option value="S1 Teknik Lingkungan">S1 Teknik Lingkungan</option>
+              <option value="S1 Arsitektur" <?php if($row['prodi']=='S1 Arsitektur') echo 'selected'?>>S1 Arsitektur</option>
+              <option value="S1 Teknik Sipil" <?php if($row['prodi']=='S1 Teknik Sipil') echo 'selected'?>>S1 Teknik Sipil</option>
+              <option value="S1 Teknik Mesin" <?php if($row['prodi']=='S1 Teknik Mesin') echo 'selected'?>>S1 Teknik Mesin</option>
+              <option value="S1 Teknik Elektro" <?php if($row['prodi']=='S1 Teknik Elektro') echo 'selected'?>>S1 Teknik Elektro</option>
+              <option value="S1 Teknologi Informasi" <?php if($row['prodi']=='S1 Teknologi Informasi') echo 'selected'?>>S1 Teknologi Informasi</option>
+              <option value="S1 Teknik Industri" <?php if($row['prodi']=='S1 Teknik Industri') echo 'selected'?>>S1 Teknik Industri</option>
+              <option value="S1 Teknik Lingkungan" <?php if($row['prodi']=='S1 Teknik Lingkungan') echo 'selected'?>>S1 Teknik Lingkungan</option>
             </select>
           </div>
           <div class="form-group mb-3">
